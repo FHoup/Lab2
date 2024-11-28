@@ -28,36 +28,23 @@ public class Main {
         }
         for (int z = 0; z < a.length ; z++) { // Заполнение массива аргументов чисел
             for (int x = 0; x < a[z].length; x++) {
-                arg[z][x] = Math.atan(a[z][x].charAt(4)-'0' / a[z][x].charAt(0)-'0');
+                arg[z][x] = Math.atan((a[z][x].charAt(4)- '0') / (a[z][x].charAt(0)-'0'));
             }
         }
 
-        for (int i = 0 ; i < a.length ; i++) { // Сортировка массива
-            for (int j = 0; j < a.length-i; j++) {
-                if (mod[i][j]==mod[i][j+1]){
-                    if (arg[i][j]>arg[i][j+1]){
+        for (int i = 0; i < a.length; i++) { // Сортировка массива
+            for (int t = 1; t<a[i].length; t++) {
+                for (int j = 0; j < m - t; j++) {
+                    if (mod[i][j] == mod[i][j + 1] && arg[i][j] > arg[i][j + 1] || mod[i][j] > mod[i][j + 1]) {
                         String z = a[i][j];
-                        a[i][j] = a[i][j+1];
-                        a[i][j+1] = z;
-                        double u = arg[i][j];
-                        arg[i][j] = arg[i][j+1];
-                        arg[i][j+1] = u;
+                        a[i][j] = a[i][j + 1];
+                        a[i][j + 1] = z;
                         double y = mod[i][j];
-                        mod[i][j] = mod[i][j+1];
-                        mod[i][j+1] = y;
-                    }
-                }
-                else{
-                    if (mod[i][j]>mod[i][j+1]){
-                    String z = a[i][j];
-                    a[i][j] = a[i][j+1];
-                    a[i][j+1] = z;
-                    double y = mod[i][j];
-                    mod[i][j] = mod[i][j+1];
-                    mod[i][j+1] = y;
-                    double u = arg[i][j];
-                    arg[i][j] = arg[i][j+1];
-                    arg[i][j+1] = u;
+                        mod[i][j] = mod[i][j + 1];
+                        mod[i][j + 1] = y;
+                        double u = arg[i][j];
+                        arg[i][j] = arg[i][j + 1];
+                        arg[i][j + 1] = u;
                     }
                 }
             }
